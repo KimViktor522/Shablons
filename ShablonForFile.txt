@@ -1,0 +1,35 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+#include <fstream>
+
+using namespace std;
+
+int main() {
+	system("chcp 1251"); system("chcp 65001"); system("cls");
+	ifstream inputFail;	inputFail.open("input.txt");
+	ofstream outputFail; outputFail.open("output.txt");
+	if (!inputFail.is_open() || !outputFail.is_open()) {
+		cout << "Error opening file!" << endl;
+	}	
+	else{
+		string str{}, tranferStrToInt{};
+		while (!inputFail.eof()) {
+			getline(inputFail, str);
+			for (int i{}; i < (int)str.length(); ++i){
+				if ((i == (int)str.length()) || (str[i] != ' ')) {
+					while ((i != (int)str.length()) && (str[i] != ' ')) {
+						tranferStrToInt += str[i];
+						++i;
+					}
+
+					tranferStrToInt.clear();
+				}			
+			}
+		}
+	}
+	inputFail.close();
+	outputFail.close();
+	system("pause");
+	return 0;
+}
