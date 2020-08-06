@@ -10,7 +10,7 @@ int main() {
 	ifstream inputFail;	inputFail.open("input.txt");
 	ofstream outputFail; outputFail.open("output.txt");
 	if (!inputFail.is_open() || !outputFail.is_open()) {
-		cout << "Error opening file!" << endl;
+		cerr << "Error opening file!" << endl;
 	}	
 	else{
 		string str{}, tranferStrToInt{};

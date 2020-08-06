@@ -1,0 +1,59 @@
+#include <iostream>
+#include <cstdio>
+
+using namespace std;
+
+template<typename T>
+class Node {
+public:
+	T value{};
+	Node<T>* next;
+};
+
+template<typename T>
+class List {
+	int listSize{};
+	Node<T>* front{ nullptr };
+public:
+	~List() {
+		clear();
+	}	
+	//вставка числа вправо
+	Node<T>* push_front(T data) { 
+		Node<T>* current = new Node<T>;
+		current->value = data;
+		current->next = front;
+		front = current;
+		++listSize;
+		return current;
+	}
+	//удаление всего 
+	void clear() { 
+		if (!listSize) return;
+		Node<T>* current{ front };
+		Node<T>* currentDel{ nullptr };
+		while (current->next != nullptr){
+			currentDel = current->next;
+			delete current;	
+			current = currentDel;
+		}	
+		front = nullptr;
+		listSize = 0;
+	}
+	//вывод
+	void print() {
+		if (!listSize) return;
+		for (Node<T>* current{ front }; current != nullptr; current = current->next) {
+			cout << current->value << "  ";
+		}
+		cout << "\n";
+	}
+};
+
+int main() {
+	system("chcp 1251"); system("chcp 65001"); system("cls");
+	List<int> list;
+	
+	system("pause");
+	return 0;
+}
